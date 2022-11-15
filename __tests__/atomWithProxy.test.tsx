@@ -1,8 +1,8 @@
 import React, { StrictMode, Suspense } from 'react'
 import { fireEvent, render } from '@testing-library/react'
 import { atom, useAtom } from 'jotai'
-import { atomWithProxy } from 'jotai/valtio'
 import { proxy, snapshot } from 'valtio/vanilla'
+import { atomWithProxy } from '../src/index'
 
 it('count state', async () => {
   const proxyState = proxy({ count: 0 })
