@@ -1,5 +1,5 @@
-import { atom } from 'jotai'
-import type { SetStateAction } from 'jotai'
+import { atom } from 'jotai/vanilla'
+import type { SetStateAction } from 'jotai/vanilla'
 import { snapshot, subscribe } from 'valtio/vanilla'
 
 const isObject = (x: unknown): x is object =>

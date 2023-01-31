@@ -1,6 +1,7 @@
 import React, { StrictMode, Suspense } from 'react'
 import { fireEvent, render } from '@testing-library/react'
-import { atom, useAtom } from 'jotai'
+import { useAtom } from 'jotai/react'
+import { atom } from 'jotai/vanilla'
 import { proxy, snapshot } from 'valtio/vanilla'
 import { atomWithProxy } from '../src/index'
 

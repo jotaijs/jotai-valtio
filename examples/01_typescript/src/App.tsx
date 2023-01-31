@@ -1,5 +1,5 @@
 import React from 'react'
-import { useAtom } from 'jotai'
+import { useAtom } from 'jotai/react'
 import { atomWithProxy } from 'jotai/valtio'
 import { proxy, subscribe } from 'valtio/vanilla'
 
