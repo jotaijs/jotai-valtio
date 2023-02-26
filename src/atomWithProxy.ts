@@ -48,6 +48,7 @@ export function atomWithProxy<Value extends object>(
   options?: Options
 ) {
   const baseAtom = atom(snapshot(proxyObject))
+  baseAtom.debugPrivate = true
   baseAtom.onMount = (setValue) => {
     const callback = () => {
       setValue(snapshot(proxyObject))
