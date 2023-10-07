@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- feat: add api for returning a valtio proxyState from a jotai atom derived from another atom value #5
+
 ## [0.3.0] - 2023-03-04
 ### Added
 - feat: mark internal atoms as private
