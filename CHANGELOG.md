@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [0.4.0] - 2023-10-07
 ### Added
 - feat: add api for returning a valtio proxyState from a jotai atom derived from another atom value #5
 
