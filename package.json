@@ -4,6 +4,9 @@
   "version": "0.4.0",
   "type": "module",
   "author": "Daishi Kato",
+  "contributors": [
+    "David Maskasky (https://github.com/dmaskasky)"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jotaijs/jotai-valtio.git"
