@@ -86,6 +86,6 @@
   },
   "peerDependencies": {
     "jotai": ">=2.0.0",
-    "valtio": ">=9.0.0"
+    "valtio": ">=1.0.0"
   }
 }
