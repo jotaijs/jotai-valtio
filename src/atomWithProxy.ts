@@ -3,7 +3,7 @@ import type { SetStateAction } from 'jotai/vanilla';
 import { snapshot, subscribe } from 'valtio/vanilla';
 
 const isObject = (x: unknown): x is object =>
-  typeof x === 'object' && x !== null;
+  typeof x === 'object' && x !== null && !(x instanceof Promise);
 
 const applyChanges = <T extends object>(proxyObject: T, prev: T, next: T) => {
   (Object.getOwnPropertyNames(prev) as (keyof T)[]).forEach((key) => {
