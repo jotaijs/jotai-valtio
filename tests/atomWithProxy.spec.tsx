@@ -2,7 +2,8 @@
 
 import { afterEach, expect, test } from 'vitest';
 import { StrictMode, Suspense } from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import { useAtom } from 'jotai/react';
 import { atom } from 'jotai/vanilla';
 import { proxy, snapshot } from 'valtio/vanilla';
@@ -40,7 +41,7 @@ test('count state', async () => {
 
   await findByText('count: 1');
 
-  fireEvent.click(getByText('button'));
+  await userEvent.click(getByText('button'));
   await findByText('count: 2');
   expect(proxyState.count).toBe(2);
 
@@ -81,7 +82,7 @@ test('nested count state', async () => {
 
   await findByText('count: 0');
 
-  fireEvent.click(getByText('button'));
+  await userEvent.click(getByText('button'));
   await findByText('count: 1');
   expect(proxyState.nested.count).toBe(1);
   expect(otherSnap === snapshot(proxyState.other)).toBe(true);
@@ -133,7 +134,7 @@ test('state with a promise', async () => {
   resolve();
   await findByText('status: done');
 
-  fireEvent.click(getByText('button'));
+  await userEvent.click(getByText('button'));
   await findByText('loading');
   resolve();
   await findByText('status: modified');
@@ -182,7 +183,7 @@ test('synchronous atomWithProxy and regular atom ', async () => {
   );
 
   await findByText('selected element: none');
-  fireEvent.click(getByText('create and select element'));
+  await userEvent.click(getByText('create and select element'));
   getByText('selected element: element'); // synchronous
 });
 
@@ -208,7 +209,7 @@ test('array.length state', async () => {
   );
 
   await findByText('array0: 0');
-  fireEvent.click(getByText('button'));
+  await userEvent.click(getByText('button'));
 
   await findByText('array0: 1');
   expect(proxyState.array.length).toBe(1);
