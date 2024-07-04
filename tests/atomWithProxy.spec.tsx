@@ -1,4 +1,4 @@
-/// <reference types="react/experimental" />
+/// <reference types="react/canary" />
 
 import { afterEach, expect, test } from 'vitest';
 import { StrictMode, Suspense } from 'react';
