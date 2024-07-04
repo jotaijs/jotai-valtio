@@ -3,7 +3,7 @@ import type { SetStateAction } from 'jotai/vanilla';
 import { snapshot, subscribe } from 'valtio/vanilla';
 
 const isObject = (x: unknown): x is object =>
-  typeof x === 'object' && x !== null;
+  typeof x === 'object' && x !== null && !(x instanceof Promise);
 
 const applyChanges = <T extends object>(proxyObject: T, prev: T, next: T) => {
   (Object.getOwnPropertyNames(prev) as (keyof T)[]).forEach((key) => {
@@ -36,13 +36,6 @@ type Options = {
   sync?: boolean;
 };
 
-// Currently atomWithProxy does not support overwriting Promise() with a primitive
-// due to the requirement of valtio types to always be symmetric.
-// Consequently, this would not work:
-// setStatusState({ ...state, status: 'newStatus' })
-// To overwrite a value that came from a promise you must do it via an immediately
-// resolving promise:
-// setStatusState({ ...state, status: Promise.resolve('newStatus') })
 export function atomWithProxy<Value extends object>(
   proxyObject: Value,
   options?: Options,
