@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+## [0.6.0] - 2024-12-20
+
+### Changed
+
+- Migrate to Valtio v2 #10
+
 ## [0.5.0] - 2024-05-26
 
 ### Changed
