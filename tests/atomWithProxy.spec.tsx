@@ -1,5 +1,3 @@
-/// <reference types="react/canary" />
-
 import { afterEach, expect, test } from 'vitest';
 import { StrictMode, Suspense } from 'react';
 import { act, cleanup, render, screen } from '@testing-library/react';
@@ -122,12 +120,9 @@ test('state with a promise', async () => {
     );
   };
 
-  const Controls = () => <button onClick={() => resolve()}>resolve</button>;
-
   await act(async () => {
     render(
       <StrictMode>
-        <Controls />
         <Suspense fallback="loading">
           <Status />
         </Suspense>
