@@ -1,8 +1,7 @@
-/// <reference types="react/experimental" />
-
 import { afterEach, expect, test } from 'vitest';
 import { StrictMode, Suspense } from 'react';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { act, cleanup, render, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import { useAtom } from 'jotai/react';
 import { atom } from 'jotai/vanilla';
 import { proxy, snapshot } from 'valtio/vanilla';
@@ -32,20 +31,20 @@ test('count state', async () => {
     );
   };
 
-  const { findByText, getByText } = render(
+  render(
     <StrictMode>
       <Counter />
     </StrictMode>,
   );
 
-  await findByText('count: 1');
+  await screen.findByText('count: 1');
 
-  fireEvent.click(getByText('button'));
-  await findByText('count: 2');
+  await userEvent.click(screen.getByText('button'));
+  await screen.findByText('count: 2');
   expect(proxyState.count).toBe(2);
 
   ++proxyState.count;
-  await findByText('count: 3');
+  await screen.findByText('count: 3');
   expect(proxyState.count).toBe(3);
 });
 
@@ -73,21 +72,21 @@ test('nested count state', async () => {
     );
   };
 
-  const { findByText, getByText } = render(
+  render(
     <StrictMode>
       <Counter />
     </StrictMode>,
   );
 
-  await findByText('count: 0');
+  await screen.findByText('count: 0');
 
-  fireEvent.click(getByText('button'));
-  await findByText('count: 1');
+  await userEvent.click(screen.getByText('button'));
+  await screen.findByText('count: 1');
   expect(proxyState.nested.count).toBe(1);
   expect(otherSnap === snapshot(proxyState.other)).toBe(true);
 
   ++proxyState.nested.count;
-  await findByText('count: 2');
+  await screen.findByText('count: 2');
   expect(proxyState.nested.count).toBe(2);
   expect(otherSnap === snapshot(proxyState.other)).toBe(true);
 });
@@ -121,22 +120,24 @@ test('state with a promise', async () => {
     );
   };
 
-  const { findByText, getByText } = render(
-    <StrictMode>
-      <Suspense fallback="loading">
-        <Status />
-      </Suspense>
-    </StrictMode>,
-  );
+  await act(async () => {
+    render(
+      <StrictMode>
+        <Suspense fallback="loading">
+          <Status />
+        </Suspense>
+      </StrictMode>,
+    );
+  });
 
-  await findByText('loading');
+  await screen.findByText('loading');
   resolve();
-  await findByText('status: done');
+  await screen.findByText('status: done');
 
-  fireEvent.click(getByText('button'));
-  await findByText('loading');
+  await userEvent.click(screen.getByText('button'));
+  await screen.findByText('loading');
   resolve();
-  await findByText('status: modified');
+  await screen.findByText('status: modified');
 });
 
 test('synchronous atomWithProxy and regular atom ', async () => {
@@ -175,15 +176,15 @@ test('synchronous atomWithProxy and regular atom ', async () => {
     );
   };
 
-  const { findByText, getByText } = render(
+  render(
     <StrictMode>
       <Elements />
     </StrictMode>,
   );
 
-  await findByText('selected element: none');
-  fireEvent.click(getByText('create and select element'));
-  getByText('selected element: element'); // synchronous
+  await screen.findByText('selected element: none');
+  await userEvent.click(screen.getByText('create and select element'));
+  screen.getByText('selected element: element'); // synchronous
 });
 
 test('array.length state', async () => {
@@ -201,15 +202,15 @@ test('array.length state', async () => {
     );
   };
 
-  const { findByText, getByText } = render(
+  render(
     <StrictMode>
       <Counter />
     </StrictMode>,
   );
 
-  await findByText('array0: 0');
-  fireEvent.click(getByText('button'));
+  await screen.findByText('array0: 0');
+  await userEvent.click(screen.getByText('button'));
 
-  await findByText('array0: 1');
+  await screen.findByText('array0: 1');
   expect(proxyState.array.length).toBe(1);
 });

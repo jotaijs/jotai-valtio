@@ -1,5 +1,6 @@
 import { atom } from 'jotai/vanilla';
 import { proxy, snapshot, subscribe } from 'valtio/vanilla';
+import { deepClone } from 'valtio/vanilla/utils';
 
 type Wrapped<T> = { value: T };
 
@@ -65,7 +66,7 @@ export function mutableAtom<Value>(
    * create the proxy state and subscribe to it
    */
   function createProxyState(getStore: () => Store<Value>) {
-    const proxyState = proxyFn({ value: initialValue });
+    const proxyState = proxyFn({ value: deepClone(initialValue) });
     // We never unsubscribe, but it's garbage collectable.
     subscribe(proxyState, onChange(getStore), true);
     return proxyState;
