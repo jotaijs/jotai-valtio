@@ -22,6 +22,6 @@ export default defineConfig(({ mode }) => {
   return {
     root: resolve('examples', DIR),
     server: { port: Number(PORT) },
-    plugins: [tsconfigPaths()],
+    plugins: [tsconfigPaths({ root: resolve('.') })],
   };
 });
