@@ -18,10 +18,7 @@ export default tseslint.config(
   ...compat.extends('plugin:react-hooks/recommended'),
   {
     settings: {
-      'import/resolver': {
-        typescript: true,
-        alias: { map: [['jotai-valtio', './src/index.ts']] },
-      },
+      'import/resolver': { typescript: true },
       react: { version: 'detect' },
     },
     rules: {

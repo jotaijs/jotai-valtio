@@ -12,7 +12,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "jotai-valtio": ["./src/index.js"]
+      "jotai-valtio": ["./src/index.ts"]
     }
   },
   "exclude": ["dist", "examples"]
