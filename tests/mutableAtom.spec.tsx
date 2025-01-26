@@ -1,3 +1,5 @@
+/* eslint-disable react-compiler/react-compiler */
+
 import { afterEach, expect, test } from 'vitest';
 import {
   act,
