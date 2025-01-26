@@ -45,8 +45,8 @@ importers:
         specifier: ^7.37.4
         version: 7.37.4(eslint@9.19.0)
       eslint-plugin-react-hooks:
-        specifier: ^5.1.0
-        version: 5.1.0(eslint@9.19.0)
+        specifier: 5.2.0-canary-de1eaa26-20250124
+        version: 5.2.0-canary-de1eaa26-20250124(eslint@9.19.0)
       happy-dom:
         specifier: ^16.7.2
         version: 16.7.2
@@ -880,8 +880,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9
 
-  eslint-plugin-react-hooks@5.1.0:
-    resolution: {integrity: sha512-mpJRtPgHN2tNAvZ35AMfqeB3Xqeo273QxrHJsbBEPWODRM4r0yB6jfoROqKEYrOn27UtRPpcpHc2UqyBSuUNTw==}
+  eslint-plugin-react-hooks@5.2.0-canary-de1eaa26-20250124:
+    resolution: {integrity: sha512-BJdM6GV56L/RvLZ6SefQNB2hf1cDT9Jj6s31czVuNp3MzOCpE4owM5f0pj01+MPtu5yF3h1HL8e0BqSwOLl4Ww==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -2677,7 +2677,7 @@ snapshots:
       safe-regex-test: 1.1.0
       string.prototype.includes: 2.0.1
 
-  eslint-plugin-react-hooks@5.1.0(eslint@9.19.0):
+  eslint-plugin-react-hooks@5.2.0-canary-de1eaa26-20250124(eslint@9.19.0):
     dependencies:
       eslint: 9.19.0
 
