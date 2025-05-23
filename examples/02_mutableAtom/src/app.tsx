@@ -1,4 +1,4 @@
-/* eslint-disable react-compiler/react-compiler */
+/* eslint-disable react-hooks/react-compiler */
 
 import { useAtomValue } from 'jotai/react';
 import { mutableAtom } from 'jotai-valtio';
